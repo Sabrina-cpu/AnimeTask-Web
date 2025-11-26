@@ -6,3 +6,4 @@ python-jose[cryptography]
 pydantic            
 requests            
 httpx
+deep_translator
