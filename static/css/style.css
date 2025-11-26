@@ -1,0 +1,810 @@
+/* static/css/style.css */
+
+/* =======================================
+   1. BASE Y UTILIDADES
+   ======================================= */
+body {
+    font-family: Arial, sans-serif;
+    margin:0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+a {
+    text-decoration: none;
+    color: #4a4e69;
+}
+
+a:hover {
+    color: #9094b8;
+}
+
+/* Utlidades para mensajes */
+.message-area, .success-message, .error-message, .loading {
+    padding: 10px;
+    margin: 15px 0;
+    border-radius: 5px;
+    text-align: center;
+    width: 100%; /* Asegura que ocupe todo el ancho disponible */
+    box-sizing: border-box;
+}
+
+.success-message {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.error-message {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.loading {
+    color: #4a4e69;
+}
+
+/* =======================================
+   2. NAVEGACIÓN (HEADER) y Botones Generales
+   ======================================= */
+header {
+    background-color: #4a4e69;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px 20px;
+}
+
+.logo a {
+    display: flex;          /* Pone la imagen y el texto en fila */
+    align-items: center;    /* Los centra verticalmente */
+    gap: 10px;              /* Espacio entre el logo y el texto */
+    color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+/* Clase nueva para controlar el tamaño de la imagen del logo */
+.logo-img {
+    height: 60px;           /* Altura fija para que no rompa la barra */
+    width: auto;            /* El ancho se ajusta solo */
+    object-fit: contain;
+}
+
+
+.auth-buttons a, 
+.auth-buttons button {
+    margin-left: 10px;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+/* Botón Primario (Acceder, Guardar Cambios) */
+.btn-primary {
+    background-color: #f72585;
+    color: white;
+    border: 1px solid #f72585;
+}
+
+.btn-primary:hover {
+    background-color: #e6237a;
+}
+
+/* Botón Secundario (Buscar - en Filtros) */
+.btn-secondary {
+    background-color: #4a4e69; 
+    color: white;
+    border: 1px solid #4a4e69;
+    padding: 8px 15px;
+    border-radius: 5px;
+}
+
+.btn-secondary:hover {
+    background-color: #5d6184;
+}
+
+/* Botón de Detalles (en Tarjetas) */
+.btn-detail {
+    display: block; 
+    width: 90%; 
+    margin: 10px auto 15px; 
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    text-align: center;
+    font-weight: bold;
+    
+    background-color: #f72585; 
+    color: white;
+    border: 1px solid #f72585;
+}
+
+.btn-detail:hover {
+    background-color: #e6237a;
+}
+
+/* Estilo del botón de menú (Hamburguer) */
+.menu-toggle-btn {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 0 15px;
+    display: none;
+}
+
+/* =======================================
+   3. LAYOUT PRINCIPAL Y SIDEBAR
+   ======================================= */
+.main-content-area {
+    display: flex;
+    max-width: 1200px;
+    margin: 20px auto;
+    width: 90%;
+}
+
+.sidebar {
+    width: 250px;
+    flex-shrink: 0;
+    margin-right: 20px;
+    background-color: #4a4e69;
+    color: #fff;
+    border-radius: 8px;
+    padding: 20px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    height: fit-content; 
+    position: sticky; 
+    top: 20px;
+}
+
+.sidebar.hidden {
+    display: none;
+}
+/* ... Estilos de sidebar (profile-info, sidebar-nav, etc.) ... */
+
+.profile-info {
+    text-align: center;
+    padding: 10px 0 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 15px;
+}
+
+.profile-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #f72585;
+    margin-bottom: 10px;
+}
+
+.sidebar-nav a {
+    display: block;
+    padding: 10px 20px;
+    color: #fff;
+    transition: background-color 0.2s;
+    font-size: 1.1em;
+}
+
+.sidebar-nav a:hover {
+    background-color: #5d6184;
+}
+
+.sidebar-footer {
+    padding: 15px 20px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+}
+
+.btn-logout {
+    background-color: #6a053c;
+    color: white;
+    border: 1px solid #6a053c;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-logout:hover {
+    background-color: #550431;
+}
+
+/* CONTENEDOR DE CONTENIDO (Búsqueda y Resultados) */
+.content-container {
+    flex-grow: 1; 
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    
+    /* 💥 CORRECCIÓN CLAVE: Fuerza apilación vertical de todo el contenido */
+    display: flex; 
+    flex-direction: column; 
+    width: 100%; /* Asegura que ocupe el espacio del main-content-area */
+    box-sizing: border-box; 
+}
+
+
+/* =======================================
+   4. BÚSQUEDA Y RESULTADOS (CORREGIDO)
+   ======================================= */
+.search-bar {
+    display: flex;
+    flex-direction: column; /* Apila el input-group y los filters */
+    gap: 15px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.input-group {
+    flex-grow: 1;
+    position: relative; /* CLAVE para el autocomplete */
+    width: 100%;
+}
+
+.search-bar input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box; 
+    font-size: 16px;
+}
+
+/* -------------------------------------------
+   A. ESTILOS DE FILTROS
+   ------------------------------------------- */
+
+.filters {
+    display: flex;
+    gap: 10px; 
+    align-items: center;
+    flex-wrap: wrap; /* Para responsive */
+    width: 100%;
+}
+
+.filters select,
+.filters input[type="number"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    max-width: 150px; 
+    flex-grow: 1;
+}
+
+.filters .btn-secondary {
+    padding: 10px 20px;
+    flex-shrink: 0; 
+}
+
+/* -------------------------------------------
+   B. AUTOCOMPLETE / SUGERENCIAS
+   ------------------------------------------- */
+
+.suggestions-dropdown {
+    position: absolute;
+    top: 100%; 
+    left: 0;
+    right: 0;
+    z-index: 100; 
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-top: none;
+    border-radius: 0 0 5px 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: none; 
+}
+
+.suggestion-item {
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #eee;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.suggestion-item:hover {
+    background-color: #f0f0f0;
+}
+
+/* -------------------------------------------
+   C. GRID DE RESULTADOS
+   ------------------------------------------- */
+
+.anime-grid {
+    display: grid;
+    /* Ajustado para mejor distribución, min 280px */
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+    gap: 20px;
+    margin-top: 20px;
+    width: 100%; /* Ocupa el 100% del content-container */
+}
+
+.anime-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+.anime-card img {
+    width: 100%;
+    height: 300px; 
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.anime-card h3 {
+    font-size: 1.2em;
+    color: #4a4e69;
+    margin: 5px 10px;
+}
+
+.anime-card p {
+    font-size: 0.9em;
+    color: #666;
+    padding: 0 15px;
+    /* Para truncar el texto a 3 líneas */
+    display: -webkit-box; 
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* =======================================
+   5. VISTAS DINÁMICAS (PERFIL, FAVORITOS)
+   ======================================= */
+/* ... Estilos de vistas dinámicas y auth-form ... */
+
+.profile-view, .favorites-view {
+    display: none; 
+}
+
+.profile-view.active, .favorites-view.active {
+    display: block;
+}
+
+.back-button {
+    background-color: #ccc;
+    color: #333;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: background-color 0.2s;
+    font-size: 0.9em;
+    display: block; 
+    width: fit-content;
+}
+
+.back-button:hover {
+    background-color: #bbb;
+}
+
+.profile-view .auth-form {
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    background-color: #f9f9f9;
+}
+
+.profile-avatar-preview {
+    width: 100px; 
+    height: 100px; 
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 15px auto;
+    display: block;
+    border: 2px solid #f72585;
+}
+
+
+/* =======================================
+   6. DETALLES (detail.html)
+   ======================================= */
+.detail-container {
+    padding: 20px;
+    max-width: 1000px;
+    margin: 20px auto;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.detail-header {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 30px;
+    align-items: flex-start;
+}
+
+.detail-header img {
+    width: 250px;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn-favorite {
+    background-color: #4a4e69;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background-color 0.2s;
+    font-size: 1em;
+}
+
+.btn-favorite:hover {
+    background-color: #5d6184;
+}
+
+.btn-favorite.is-favorite {
+    background-color: #e6237a; /* Rojo para indicar que ya está en favoritos */
+}
+
+.btn-favorite.is-favorite:hover {
+    background-color: #f72585;
+}
+
+
+/* =======================================
+   7. MEDIA QUERIES (Móvil)
+   ======================================= */
+
+@media (max-width: 768px) {
+    .menu-toggle-btn {
+        display: block;
+    }
+
+    .auth-buttons {
+        display: none; 
+    }
+
+    .main-content-area {
+        flex-direction: column;
+        width: 100%;
+        margin: 0;
+    }
+
+    .sidebar {
+        width: 100%;
+        margin-right: 0;
+        border-radius: 0;
+        box-shadow: none;
+        position: fixed;
+        top: 60px; 
+        left: 0;
+        height: calc(100vh - 60px);
+        transform: translateX(-100%);
+        transition: transform 0.3s ease-in-out;
+        z-index: 50;
+    }
+    
+    .sidebar.is-open {
+        transform: translateX(0);
+    }
+    
+    body.sidebar-open {
+        overflow: hidden;
+    }
+
+    .content-container {
+        padding: 15px;
+        border-radius: 0;
+        /* Se elimina el min-height fijo */
+        padding-bottom: 80px; 
+    }
+    
+    .filters {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .filters select,
+    .filters input[type="number"],
+    .filters .btn-secondary {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .detail-header {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .detail-header img {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+
+/* =======================================
+   8. ESTILOS DE AUTENTICACIÓN (LOGIN/REGISTER)
+   ======================================= */
+/* ... Estilos de formularios de autenticación ... */
+
+.auth-form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 80px);
+}
+
+.auth-form {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px; 
+    margin: 20px auto; 
+    box-sizing: border-box;
+}
+
+.auth-form h2 {
+    color: #4a4e69;
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 1.8em;
+}
+
+.auth-form label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+    font-weight: bold;
+}
+
+.auth-form input[type="text"],
+.auth-form input[type="password"],
+.auth-form input[type="email"], 
+.auth-form input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box; 
+    font-size: 16px;
+}
+
+.auth-form .btn-primary {
+    width: 60%; 
+    padding: 12px;
+    font-size: 1.1em;
+    margin: 10px auto; 
+    display: block; 
+}
+
+.auth-form p {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.auth-form p a {
+    color: #f72585;
+    font-weight: bold;
+}
+
+/* =======================================
+   CAROUSEL DE TENDENCIAS (Horizontal Fix)
+   ======================================= */
+.trending-section {
+    margin-bottom: 30px;
+    position: relative; /* Necesario para posicionar los botones */
+}
+
+.trending-section h2 {
+    color: #f72585;
+    margin-bottom: 15px;
+    font-size: 1.5em;
+}
+
+.carousel-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.carousel-track {
+    display: flex;             /* ¡CLAVE! Pone los elementos en fila */
+    gap: 15px;
+    overflow-x: auto;          /* Permite el scroll */
+    scroll-behavior: smooth;
+    padding: 10px 5px;
+    width: 100%;
+    
+    /* Ocultar barra de scroll */
+    scrollbar-width: none; 
+    -ms-overflow-style: none;
+}
+
+.carousel-track::-webkit-scrollbar { 
+    display: none; 
+}
+
+.carousel-item {
+    flex: 0 0 160px;          /* ¡CLAVE! Ancho fijo para que no se aplasten */
+    min-width: 160px;
+    cursor: pointer;
+    transition: transform 0.2s;
+    text-align: center;
+}
+
+.carousel-item:hover {
+    transform: scale(1.05);
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    display: block;
+}
+
+.carousel-item p {
+    font-size: 0.9em;
+    font-weight: bold;
+    margin-top: 8px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #4a4e69;
+}
+
+/* Botones */
+.carousel-btn {
+    background-color: rgba(74, 78, 105, 0.9);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+    font-size: 1.2em;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-btn.prev { left: -15px; }
+.carousel-btn.next { right: -15px; }
+
+@media (max-width: 768px) {
+    .carousel-btn { display: none; }
+}
+
+
+
+/* Cabecera de las vistas (Editar Perfil, Favoritos) */
+.view-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.view-header h2 {
+    margin: 0;
+    color: #4a4e69;
+}
+
+/* Ajustes para botones pequeños */
+.btn-sm {
+    padding: 5px 10px;
+    font-size: 0.9em;
+}
+
+/* Contenedor de acciones del formulario */
+.form-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.form-actions button {
+    flex: 1; /* Para que ambos botones ocupen el mismo ancho */
+}
+
+/* Sección Personajes */
+
+.characters-section {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.characters-section h3 {
+    color: #4a4e69;
+    margin-bottom: 15px;
+}
+
+.characters-grid {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto; /* Scroll horizontal si son muchos */
+    padding-bottom: 10px;
+}
+
+.character-card {
+    flex: 0 0 100px; /* Ancho fijo pequeño */
+    text-align: center;
+}
+
+.character-card img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%; /* Círculos perfectos */
+    object-fit: cover;
+    border: 2px solid #f72585;
+    margin-bottom: 5px;
+    transition: transform 0.2s;
+}
+
+.character-card img:hover {
+    transform: scale(1.1);
+}
+
+.character-card p {
+    font-size: 0.8em;
+    font-weight: bold;
+    color: #333;
+    margin: 0;
+}
+
+.character-card span {
+    font-size: 0.7em;
+    color: #666;
+    display: block;
+}
+
+/*Seccion Detail Video Trailer*/
+.trailer-section {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.trailer-section h3 {
+    color: #4a4e69;
+    margin-bottom: 15px;
+}
+
+.video-container {
+    max-width: 800px;
+    margin: 0 auto;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}

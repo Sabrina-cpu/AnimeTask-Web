@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles del Anime</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="/">
+                <img src="/static/images/logo.png" alt="Logo" class="logo-img">
+                AnimeTask
+                </a>
+            </div>
+            <div id="auth-nav" class="auth-buttons">
+                </div>
+        </nav>
+    </header>
+
+    <main>
+        <div id="animeDetailContainer" class="detail-container">
+            <p>Cargando información...</p>
+        </div>
+        <div id="trailerSection" class="trailer-section" style="display: none;">
+            <h3>🎬 Tráiler Oficial</h3>
+                <div class="video-container">
+                    <iframe id="trailerFrame" width="100%" height="400" src="" frameborder="0" allowfullscreen></iframe>
+                </div>
+        </div>
+        <div class="characters-section">
+            <h3>Personajes Principales</h3>
+            <div id="charactersTrack" class="characters-grid">
+                <p class="loading">Cargando personajes...</p>
+            </div>
+        </div>
+    </main>
+
+    <script src="/static/js/main.js"></script>
+    <script src="/static/js/auth.js"></script>
+</body>
+</html>

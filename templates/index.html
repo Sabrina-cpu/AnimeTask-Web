@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AnimeTask - Dashboard</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="/">
+                <img src="/static/images/logo.png" alt="Logo" class="logo-img">
+                AnimeTask
+                </a>
+            </div>
+            <button id="menuToggleButton" class="menu-toggle-btn hidden">
+                ☰
+            </button>
+            <div id="auth-nav" class="auth-buttons">
+                <a href="/login" id="loginLink" class="btn-primary">Iniciar Sesión</a>
+                <button id="logoutButton" class="btn-logout" style="display: none;">Cerrar Sesión</button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="main-content-area">
+            
+            <aside id="userSidebar" class="sidebar hidden">
+                <div class="profile-info">
+                    <img src="/static/images/default_avatar.png" alt="Avatar" id="profileAvatar" class="profile-avatar">
+                    <h3 id="profileUsername">Cargando...</h3>
+                </div>
+                <nav class="sidebar-nav">
+                    <a href="#" id="editProfileLink" data-view="edit-profile">✏️ Editar Perfil</a>
+                    <a href="#" id="changePasswordLink" data-view="change-password">🔑 Cambiar Contraseña</a>
+                    <a href="#" id="favoritesLink" data-view="favorites">⭐ Mis Favoritos</a>
+                </nav>
+                
+                <div class="sidebar-footer">
+                    <button id="logoutButtonSidebar" class="btn-logout">Cerrar Sesión</button>
+                </div>
+            </aside>
+
+            <div class="content-container">
+                
+                <div id="trendingSection" class="trending-section">
+                    <h2>🔥 Tendencias Ahora</h2>
+                    <div class="carousel-wrapper">
+                        <button id="prevBtn" class="carousel-btn prev">❮</button>
+                        
+                        <div id="trendingTrack" class="carousel-track">
+                            <div class="loading-carousel">Cargando tendencias...</div>
+                        </div>
+
+                        <button id="nextBtn" class="carousel-btn next">❯</button>
+                    </div>
+                </div>
+                
+                <hr style="margin: 20px 0; border: 0; border-top: 1px solid #eee;">
+
+                <h1>Buscar Animes</h1>
+
+                <form id="searchForm" class="search-bar">
+                    <div class="input-group">
+                        <input type="text" id="searchInput" name="q" placeholder="Buscar anime por título..." autocomplete="off">
+                        <div id="suggestionsContainer" class="suggestions-dropdown"></div>
+                    </div>
+
+                    <div class="filters">
+                        <select name="genre" id="genreFilter">
+                            <option value="">Todos los géneros</option>
+                            <option value="1">Action</option>
+                            <option value="2">Adventure</option>
+                            <option value="4">Comedy</option>
+                            <option value="8">Drama</option>
+                        </select>
+                        <input type="number" id="yearFilter" name="year" placeholder="Año (ej: 2023)">
+                        <button type="submit" class="btn-secondary">Buscar</button>
+                    </div>
+                </form>
+                
+                <p id="apiMessage" class="message-area"></p>
+
+                <div id="resultsContainer" class="anime-grid">
+                    <p>Usa la barra de búsqueda y los filtros para encontrar tu próximo anime favorito.</p>
+                </div>
+                
+                <div id="dynamicContentArea">
+                    
+                    <div id="editProfileView" class="profile-view hidden">
+                        <div class="view-header">
+                            <h2>✏️ Editar Perfil</h2>
+                                <button id="backToSearchButtonEdit" class="btn-secondary btn-sm">
+                                    <i class="fa-solid fa-arrow-left"></i> Volver
+                                </button>
+                        </div>
+
+                        <p id="profileMessage" class="message-area"></p>
+    
+                        <form id="editProfileForm" class="auth-form" enctype="multipart/form-data">
+                        <label for="editUsername">Nombre de Usuario:</label>
+                        <input type="text" id="editUsername" name="username" required>
+
+                        <label for="editAvatar">Avatar:</label>
+                        <input type="file" id="editAvatar" name="avatar" accept="image/*">
+        
+                        <div class="avatar-preview-container">
+                        <img id="currentAvatarPreview" src="/static/images/default_avatar.png" alt="Avatar actual" class="profile-avatar-preview">
+                        </div>
+                        <small>Sube una nueva imagen (PNG, JPG). El tamaño debe ser cuadrado.</small>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn-primary">Guardar Cambios</button>
+                            <button type="button" id="cancelEditBtn" class="btn-secondary" style="background-color: #ccc; border: 1px solid #ccc; color: #333;">Cancelar</button>
+                         </div>
+                        </form>
+                    </div>
+
+                    <div id="changePasswordView" class="profile-view hidden">
+                        <h2>🔑 Cambiar Contraseña</h2>
+                        <button id="backToSearchButtonPassword" class="btn-secondary back-button">← Volver a Búsqueda</button>
+                        <p id="passwordMessage" class="message-area"></p>
+                        <form id="changePasswordForm" class="auth-form">
+                            <label for="currentPassword">Contraseña Actual:</label>
+                            <input type="password" id="currentPassword" name="currentPassword" required>
+
+                            <label for="newPassword">Nueva Contraseña:</label>
+                            <input type="password" id="newPassword" name="newPassword" required>
+                            <small>Mínimo 8 caracteres, mayúsculas, minúsculas y números.</small>
+
+                            <label for="confirmNewPassword">Confirmar Nueva Contraseña:</label>
+                            <input type="password" id="confirmNewPassword" name="confirmNewPassword" required>
+
+                            <button type="submit" class="btn-primary">Actualizar Contraseña</button>
+                        </form>
+                    </div>
+
+                    <div id="favoritesView" class="favorites-view hidden">
+                        <div id="favoritesResultsContainer" class="anime-grid">
+                            </div>
+                    </div>
+
+                </div>
+            </div> 
+        </div>
+    </main>
+
+    <script src="/static/js/main.js"></script>
+    <script src="/static/js/auth.js"></script>
+</body>
+</html>

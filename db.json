@@ -1,0 +1,30 @@
+{
+    "erick@anime.com": {
+        "password": "$2b$12$bn8AZmF5QodvsxEF4K/BL.IaCo3J1OkQo54FVE1ogaTLcc.T8BIZW",
+        "username": "Rzeznik",
+        "avatar_url": "/static/avatars/erick_20251003130511_descarga (3).jpg",
+        "favorites": []
+    },
+    "sabri123@gmail.com": {
+        "password": "$2b$12$w.LLZ/XakluaDywH8zxbyuXug5sVsP8vSK8TjJxO00dVfXRc7uK6.",
+        "username": "Pudin",
+        "avatar_url": "/static/images/default_avatar.png",
+        "favorites": []
+    },
+    "jagger@gmail.com": {
+        "password": "$2b$12$Itxexb.IHDYqbaDnmmVTfOjvn94DX7GxMjOkz/g6yugLrGwKl7rM.",
+        "username": "Jagger",
+        "avatar_url": "/static/avatars/jagger_20251125185228_4KfNagFabgvjDcGcma6ovW.jpg",
+        "favorites": [
+            61930,
+            60098,
+            38000
+        ]
+    },
+    "sabri@gmail.com": {
+        "password": "$2b$12$OFEvAW9yBUSE6ykF7sna4.1RblJxvldLV8ZTuZy0c0QwJHGqtnY0.",
+        "username": "sabrina2",
+        "avatar_url": "/static/images/default_avatar.png",
+        "favorites": []
+    }
+}
