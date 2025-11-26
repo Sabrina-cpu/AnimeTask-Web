@@ -7,3 +7,4 @@ pydantic
 requests            
 httpx
 deep_translator
+jinja2
