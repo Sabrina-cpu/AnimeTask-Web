@@ -8,3 +8,4 @@ requests
 httpx
 deep_translator
 jinja2
+email-validator
