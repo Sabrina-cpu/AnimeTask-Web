@@ -454,4 +454,10 @@ def get_anime_characters(mal_id: int):
         return characters
     except Exception as e:
         print(f"Error fetching characters: {e}")
-        return []
+
+        return 
+
+
+if __name__ == '__main__':
+    # El host="0.0.0.0" es OBLIGATORIO para Render
+    app.run(host="0.0.0.0", port=5000
